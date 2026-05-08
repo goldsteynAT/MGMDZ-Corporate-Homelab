@@ -60,9 +60,9 @@ VM IDs are assigned in ranges aligned with the VLAN tag of the corresponding net
 
 ---
 
-## 3. Asset Database (Notion)
+## 3. Asset Database (Obsidian)
 
-A Notion database titled **Hardware Inventory** acts as the operational dashboard for all physical and virtual assets.
+An Obsidian database titled **Hardware Inventory** acts as the operational dashboard for all physical and virtual assets.
 
 ### Properties (in display order)
 
@@ -105,7 +105,7 @@ Maintenance logs and notes (e.g. PCIe passthrough configurations, BIOS changes) 
 
 A two-layer approach separates day-to-day operations from formal asset management.
 
-### Level 1 — Notion (Operations)
+### Level 1 — Obsidian (Operations)
 
 | Aspect | Detail |
 |--------|--------|
@@ -192,7 +192,7 @@ Configured per VM in the Proxmox **Options → Start/Shutdown order** panel to e
 
 | # | Area | Planned change | Status |
 |--:|------|----------------|--------|
-| 1 | Asset management | Migrate purchase / warranty data from Notion to Snipe-IT | Planned |
-| 2 | Sync | Automate VM register from Proxmox API into the Notion database | Planned |
+| 1 | Asset management | Migrate purchase / warranty data from Obsidian to Snipe-IT | Planned |
+| 2 | Sync | Automate VM register from Proxmox API into the Obsidian database | Planned |
 | 3 | Tier-0 isolation | Move `AT1SRV02` (Entra Connect) onto a dedicated Tier-0 storage and VLAN — see [01-network-design.md §9](01-network-design.md#9-known-limitations--planned-improvements) | Planned |
 | 4 | Backup | Define backup schedule and retention per tier (Tier 0 daily, Tier 1 weekly) | Planned |
