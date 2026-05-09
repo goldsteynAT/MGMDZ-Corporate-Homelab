@@ -1,10 +1,18 @@
-# MGMDZ - Active Directory & Entra Hybrid Corporate Homelab
+# MGMDZ - Corporate Homelab
 "Man geht mit der Zeit oder man geht mit der Zeit"
 
 A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform end-to-end — on-premises Active Directory, Microsoft Entra ID, Windows Autopilot, GPO-based hardening, segmented networking, and tiered administration.
 
 > **Status:** Active development — see [Roadmap](#roadmap).
 > **Purpose:** Self-study and skill demonstration. All data is fictional.
+
+---
+
+## Architecture and Roadmap
+
+<img src="./architecture-roadmap.svg" alt="ArchitectureRoadmap"/>
+
+> The lab also runs separate VLANs for Home, IoT, Camera, and Guest networks. These are isolated from the corporate lab segments by default and documented in [Network Design](docs/01-network-design.md).
 
 ---
 
@@ -17,38 +25,6 @@ A personal lab environment built to design, document, and operate an enterprise-
 - **Tiered administration** — Tier 0 / 1 / 2 separation with dedicated admin accounts and PAW concept
 - **Network segmentation** — VLAN-based isolation between corporate, home, IoT, camera, and guest networks; WireGuard VPN with scoped access to the lab segment only
 - **Documentation as infrastructure** — every layer is documented, versioned, and reviewable
-
----
-
-## Architecture
-
-```mermaid
-graph TB
-    Cloud["☁️ Microsoft Entra ID<br/>+ Intune + Autopilot"]
-
-    subgraph Host["Proxmox Host — AT1HST01"]
-        subgraph VLAN110["VLAN 110 · Corp Servers"]
-            DC["AT1SRV01<br/>Domain Controller<br/>DNS · DHCP<br/>10.69.110.5"]
-            EC["AT1SRV02<br/>Entra Connect<br/>10.69.110.6"]
-            ODJ["AT1SRV04<br/>ODJ Connector<br/>10.69.110.8"]
-        end
-        subgraph VLAN120["VLAN 120 · Corp Clients"]
-            CL["AT1WKS01<br/>Windows 11"]
-        end
-    end
-
-    FW["UniFi Gateway<br/>VLANs · Firewall · WireGuard"]
-
-    Cloud <-->|"Password Hash Sync"| EC
-    Cloud <-->|"Autopilot · Hybrid AADJ"| ODJ
-    EC -.->|"LDAP"| DC
-    ODJ -.->|"RPC · creates objects"| DC
-    CL -.->|"GPO · Kerberos"| DC
-    CL <-->|"Autopilot enrolment"| Cloud
-    FW <--> Cloud
-```
-
-> The lab also runs separate VLANs for Home, IoT, Camera, and Guest networks. These are isolated from the corporate lab segments by default and documented in [Network Design](docs/01-network-design.md).
 
 ---
 
