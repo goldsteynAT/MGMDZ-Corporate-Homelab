@@ -119,5 +119,3 @@ Domain names (corp.lab), tenant identifiers, hostnames, IP addresses, GUIDs, and
 This is a private learning environment.
 
 Domain names (`corp.lab`), tenant identifiers, hostnames, IP addresses, GUIDs, and example users in this repository are fictional or have been adjusted for publication. No data, configuration, or material from any current or previous employer is used. Operational secrets — passwords, recovery keys, real tenant IDs, certificates, public IPs — are not present anywhere in this repository.
-
-Built and maintained by [Gustav Ungustl](https://www.linkedin.com/in/gustav-ungustl/).
