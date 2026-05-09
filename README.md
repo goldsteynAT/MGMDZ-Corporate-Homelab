@@ -16,6 +16,27 @@ A personal lab environment built to design, document, and operate an enterprise-
 
 ---
 
+## Screenshots
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td align="center" width="33%">
+      <img src="./images/10-69-110-5-DomainController.png" alt="Bild 1" width="100%"><br>
+      <b>Screenshot Domain Controller incl. OUs and GPOs</b>
+    </td>
+    <td align="center" width="33%">
+      <img src="./images/10-69-110-6-EntraConnect.png" alt="Bild 2" width="100%"><br>
+      <b>Screenshot Entra Connect incl. Synchronization Service Manager</b>
+    </td>
+    <td align="center" width="33%">
+      <img src="./images/10-69-110-8-ODJConnector.png" alt="Bild 3" width="100%"><br>
+      <b>Screenshot ODJ Connector incl. Event Viewer and Services.msc</b>
+    </td>
+  </tr>
+</table>
+
+
+---
+
 ## What this lab demonstrates
 
 - **Hybrid identity** — on-prem Active Directory ↔ Microsoft Entra ID via Entra Connect Sync (Password Hash Sync)
