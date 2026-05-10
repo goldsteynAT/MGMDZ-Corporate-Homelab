@@ -68,62 +68,64 @@ Asset Management (Snipe-IT), Monitoring (Prometheus + Grafana), Ticket System (Z
 ## Environment - Hardware
 
 ### Networking
+The network is a minimalist UniFi setup, consisting of a UniFi Express Router and an 8-port UniFi switch
 
+<table border="0">
+<tr>
+<td colspan="2">
 <img src="./images/Unifi_Router_Switch.jpeg" alt="Unifi Router Switch" width="730">
-
-<table>
+</td>
+</tr>
 <tr>
 <td valign="top">
-
-| Component | Spec |
-|---|---|
-| Router / Firewall | UniFi Express |
-| Switch | UniFi USW Lite 8 PoE |
-| VPN | WireGuard (built-in) |
-
+<table>
+  <tr><th>Component</th><th>Spec</th></tr>
+  <tr><td>Router / Firewall</td><td>UniFi Express</td></tr>
+  <tr><td>Switch</td><td>UniFi USW Lite 8 PoE</td></tr>
+  <tr><td>VPN</td><td>WireGuard (built-in)</td></tr>
+</table>
 </td>
 <td valign="top">
-
-| VLAN | Name | Subnet |
-|---:|---|---|
-| 100 | Corp Lab / Mgmt | `10.69.100.0/24` |
-| 110 | Corp Servers | `10.69.110.0/24` |
-| 120 | Corp Clients | `10.69.120.0/24` |
-| 254 | Management | `10.69.254.0/24` |
-
+<table>
+  <tr><th>VLAN</th><th>Name</th><th>Subnet</th></tr>
+  <tr><td>100</td><td>Corp Lab / Mgmt</td><td><code>10.69.100.0/24</code></td></tr>
+  <tr><td>110</td><td>Corp Servers</td><td><code>10.69.110.0/24</code></td></tr>
+  <tr><td>120</td><td>Corp Clients</td><td><code>10.69.120.0/24</code></td></tr>
+</table>
 </td>
 </tr>
 </table>
 
 ### Server
+Current setup: One Prxmox node (Lenovo M920Q)<br>
+Expansion: A second Lenovo ThinkCentre with an i5-8500T and 32GB RAM has been acquired
 
-<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="320" align="left">
-
-<table>
+<table border="0">
 <tr>
+<td valign="top" width="340">
+<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="320">
+</td>
 <td valign="top">
-
-| Component | Spec |
-|---|---|
-| Host | Lenovo ThinkCentre M920q — `AT1HST01` |
-| CPU | Intel i7-9700T (8 cores) |
-| RAM | 32 GB DDR4 SODIMM (2 × 16 GB) |
-| Storage — Tier 0 | 256 GB NVMe → `local-lvm` |
-| Storage — Tier 1 | 1 TB SSD → `workload-storage` |
-| Hypervisor | Proxmox VE — `vmbr0` VLAN-aware |
-
-| Name | Role | VLAN | OS |
-|---|---|---|---|
-| `AT1SRV01` | Domain Controller, DNS, DHCP | 110 | Windows Server 2022 |
-| `AT1SRV02` | Entra Connect Sync | 110 | Windows Server 2022 |
-| `AT1SRV04` | ODJ Connector | 110 | Windows Server 2022 |
-| `AT1WKS01` | Corporate workstation | 120 | Windows 11 Enterprise |
-
+<table>
+  <tr><th>Component</th><th>Spec</th></tr>
+  <tr><td>Host</td><td>Lenovo ThinkCentre M920q — <code>AT1HST01</code></td></tr>
+  <tr><td>CPU</td><td>Intel i7-9700T (8 cores)</td></tr>
+  <tr><td>RAM</td><td>32 GB DDR4 SODIMM (2 × 16 GB)</td></tr>
+  <tr><td>Storage — Tier 0</td><td>256 GB NVMe → <code>local-lvm</code></td></tr>
+  <tr><td>Storage — Tier 1</td><td>1 TB SSD → <code>workload-storage</code></td></tr>
+  <tr><td>Hypervisor</td><td>Proxmox VE — <code>vmbr0</code> VLAN-aware</td></tr>
+</table>
+<br>
+<table>
+  <tr><th>Name</th><th>Role</th><th>VLAN</th><th>OS</th></tr>
+  <tr><td><code>AT1SRV01</code></td><td>Domain Controller, DNS, DHCP</td><td>110</td><td>Windows Server 2022</td></tr>
+  <tr><td><code>AT1SRV02</code></td><td>Entra Connect Sync</td><td>110</td><td>Windows Server 2022</td></tr>
+  <tr><td><code>AT1SRV04</code></td><td>ODJ Connector</td><td>110</td><td>Windows Server 2022</td></tr>
+  <tr><td><code>AT1WKS01</code></td><td>Corporate workstation</td><td>120</td><td>Windows 11 Enterprise</td></tr>
+</table>
 </td>
 </tr>
 </table>
-
-<br clear="left">
 
 ---
 
@@ -146,17 +148,9 @@ Asset Management (Snipe-IT), Monitoring (Prometheus + Grafana), Ticket System (Z
 <br>
 [Proxmox Masterclass](https://www.udemy.com/course/proxmox-hands-on-masterclass-from-beginner-to-expert)
 
+---
+
 ## Related repositories
 
 - [Autopilot Hash Collection](https://github.com/goldsteynAT) — PowerShell tooling used in this lab to harvest hardware hashes for Autopilot registration
 
----
-
-## Notes & disclaimer
-
-This is a private learning environment.
-Domain names (corp.lab), tenant identifiers, hostnames, IP addresses, GUIDs, and example users in this repository are fictional or have been adjusted for publication. No data, configuration, or material from any current or previous employer is used. Operational secrets — passwords, recovery keys, real tenant IDs, certificates, public IPs — are not present anywhere in this repository.
-
-This is a private learning environment.
-
-Domain names (`corp.lab`), tenant identifiers, hostnames, IP addresses, GUIDs, and example users in this repository are fictional or have been adjusted for publication. No data, configuration, or material from any current or previous employer is used. Operational secrets — passwords, recovery keys, real tenant IDs, certificates, public IPs — are not present anywhere in this repository.
