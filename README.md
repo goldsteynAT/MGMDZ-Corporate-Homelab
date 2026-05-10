@@ -6,10 +6,14 @@
 A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform end-to-end:<br>
 On-premises VMs: **Active Directory**, Microsoft **Entra** & **Intune**, Windows **Autopilot**, **GPO**-based hardening, segmented **networking**
 
-</div>
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![Phase](https://img.shields.io/badge/phase-3%20of%205-blue)
+![Domain](https://img.shields.io/badge/domain-mgmdz.net-informational)
+![Hypervisor](https://img.shields.io/badge/hypervisor-Proxmox%20VE-orange)
+![Identity](https://img.shields.io/badge/identity-Hybrid%20AD%20%2B%20Entra%20ID-blueviolet)
+![License](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey)
 
-> **Status:** Active development — see [Roadmap](#roadmap)
-> **Purpose:** Self-study and skill demonstration
+</div>
 
 ---
 
@@ -26,19 +30,19 @@ On-premises VMs: **Active Directory**, Microsoft **Entra** & **Intune**, Windows
   <tr>
     <td align="center" width="25%">
       <img src="./images/Proxmox.png" alt="Bild 1" width="100%"><br>
-      <b>Proxmox Hypervisor with Virtual Machines</b>
+      <b>Proxmox Hypervisor - Virtual Machines</b>
     </td>
     <td align="center" width="25%">
       <img src="./images/DomainController.png" alt="Bild 1" width="100%"><br>
-      <b>Screenshot Domain Controller incl. OUs and GPOs</b>
+      <b>Domain Controller - OUs and GPOs</b>
     </td>
     <td align="center" width="25%">
       <img src="./images/EntraConnect.png" alt="Bild 2" width="100%"><br>
-      <b>Screenshot Entra Connect incl. Synchronization Service Manager</b>
+      <b>Entra Connect - Synchronization Service</b>
     </td>
     <td align="center" width="25%">
       <img src="./images/ODJConnector.png" alt="Bild 3" width="100%"><br>
-      <b>Screenshot ODJ Connector incl. Event Viewer and Services.msc</b>
+      <b>ODJ Connector - Event Viewer & Services</b>
     </td>
   </tr>
 </table>
@@ -61,66 +65,29 @@ Work in progress - additional features such as Asset Management (Snipe-IT), Moni
 
 ## Environment
 
-| Layer | Component | Notes |
-|-------|-----------|-------|
-| Hypervisor | Proxmox VE on Lenovo ThinkCentre M920q | Single-host setup, two-tier storage (NVMe / SSD) |
-| Network | UniFi (UDM/USW), WireGuard VPN | 9 VLANs, scoped firewall rules, segmented inter-VLAN routing |
-| Domain | `corp.lab` (AD-integrated DNS) | Single forest, single domain |
-| Identity sync | Microsoft Entra Connect Sync (PHS) | Scope: `_CORP` OU only — `_ADMIN` excluded |
-| Endpoint provisioning | Windows Autopilot (Hybrid Azure AD Join) | ODJ Connector writing to dedicated staging OU |
-| Endpoint policy | GPO + Windows LAPS | AppLocker in audit mode; LAPS with custom managed admin |
-| Cloud licensing | Microsoft 365 Business Premium | Includes Intune Plan 1, Entra ID P1, Autopilot, Defender |
+<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="380" align="left">
 
-### VM register (corporate lab segment)
+| Component | Spec |
+|---|---|
+| Host | Lenovo ThinkCentre M920q - `AT1HST01` |
+| CPU | Intel i7-9700T  (8 cores) |
+| RAM | 32 GB DDR4 SODIMM (2 × 16 GB) |
+| Storage — Tier 0 | 256 GB NVMe → `local-lvm` (core infrastructure) |
+| Storage — Tier 1 | 1 TB SSD → `workload-storage` (workloads, clients) |
+| Hypervisor | Proxmox VE — `vmbr0` VLAN-aware |
 
-| Name | Role | VLAN | IP | OS |
-|------|------|----:|----|----|
-| `AT1SRV01` | Domain Controller, DNS, DHCP | 110 | 10.69.110.5 | Windows Server 2022 |
-| `AT1SRV02` | Entra Connect Sync | 110 | 10.69.110.6 | Windows Server 2022 |
-| `AT1SRV04` | ODJ Connector | 110 | 10.69.110.8 | Windows Server 2022 |
-| `AT1WKS01` | Corporate workstation | 120 | DHCP | Windows 11 Enterprise |
+<br clear="left">
 
-Templates for Windows Server 2022 and Windows 11 Enterprise are kept on the Tier-0 storage pool for fast cloning.
-
----
-
-## Documentation
-
-| Topic | Document |
-|-------|----------|
-| Standards & inventory (naming, VM IDs, asset DB, Proxmox sizing tiers) | [docs/inventory-standards.md](docs/inventory-standards.md) |
-| Network design (VLANs, firewall, WireGuard, known limitations) | [docs/01-network-design.md](docs/01-network-design.md) |
-| Active Directory & identity (OU hierarchy, RBAC, tiering, GPOs, Entra Connect) | [docs/02-active-directory.md](docs/02-active-directory.md) |
-| Hybrid identity deep-dive (Entra Connect, SCP, sync scope) | *Planned* |
-| Autopilot Hybrid Join walkthrough | *Planned* |
-| Step-by-step GPO build guides | *Planned* (`gpos/*.md`) |
 
 ---
 
 ## Roadmap
 
-### In place
-
-- [x] Proxmox host with VLAN-aware bridge, two-tier storage layout
-- [x] UniFi VLAN segmentation, firewall rules, WireGuard VPN with scoped access
-- [x] Domain Controller, OU hierarchy, AGDLP-style RBAC, tiered admin model
-- [x] Entra Connect Sync (PHS) with `_CORP`-only sync scope
-- [x] ODJ Connector for Autopilot Hybrid Azure AD Join
-- [x] First Windows 11 client enrolled via Autopilot, verified via `dsregcmd /status`
-- [x] GPOs implemented: `GPO-DOM-Baseline`, `GPO-SEC-LAPS`, `GPO-WKS-Baseline`, `GPO-WKS-RemoteAccess`, `GPO-WKS-UserExperience`
-
 ### Next up
 
 - [ ] Server baseline GPO (`GPO-SRV-Baseline`)
 - [ ] Admin Servers baseline + hardening (`GPO-ADM-*`)
-- [ ] PAW build under `_ADMIN\Admin Workstations` with `GPO-PAW-Hardening`
 - [ ] LAPS authorized-decryptor group (`G-SEC-LAPS-Admins`)
-- [ ] Tier-0 isolation: dedicated VLAN and storage for `AT1SRV02`
-- [ ] Intune configuration profiles for Autopilot-enrolled clients
-- [ ] Windows Event Forwarding to a central collector
-- [ ] Backup schedule and retention policy per storage tier
-
-A more granular per-document roadmap is tracked at the bottom of each detail document under *Known Limitations & Planned Improvements*.
 
 ---
 
