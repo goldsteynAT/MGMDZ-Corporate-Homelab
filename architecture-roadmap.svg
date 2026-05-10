@@ -1,196 +1,207 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1100" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="title desc">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif" role="img" aria-labelledby="title desc">
   <title id="title">Hybrid Identity Homelab — Implementation Roadmap</title>
   <desc id="desc">Five-phase roadmap from foundation to identity lifecycle automation. Phases 1 and 2 implemented; phases 3, 4, 5 planned.</desc>
 
   <defs>
-    <filter id="boxShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.12"/>
+    <filter id="cardShadow" x="-5%" y="-10%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.05"/>
     </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#212529" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
 
-  <rect width="1200" height="1100" fill="#ffffff"/>
+  <rect width="1200" height="1020" fill="#FAFBFC"/>
 
-  <!-- ===================== HEADER ===================== -->
-  <g>
-    <text x="40" y="48" font-size="24" font-weight="900" letter-spacing="1" fill="#212529">HYBRID IDENTITY HOMELAB</text>
-    <text x="40" y="68" font-size="10" fill="#495057">Implementation roadmap · five phases from foundation to identity lifecycle automation</text>
-    <line x1="40" y1="86" x2="1160" y2="86" stroke="#edebe9" stroke-width="1"/>
-  </g>
+  <!-- ============== PHASE 1 — DONE ============== -->
+  <g transform="translate(40, 30)">
+    <rect width="1120" height="170" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1" filter="url(#cardShadow)"/>
 
-  <!-- ===================== PHASE 1 — FOUNDATION ===================== -->
-  <g>
-    <rect x="30" y="105" width="1140" height="160" rx="12" fill="#f3f2f1" stroke="#edebe9" stroke-width="1"/>
-    <text x="55" y="135" font-size="15" font-weight="800" letter-spacing="0.5" fill="#212529">PHASE 1 · FOUNDATION</text>
-    <text x="55" y="153" font-size="10" fill="#495057">Hardware, network, hypervisor</text>
+    <text x="28" y="34" font-size="10" font-weight="700" letter-spacing="2.5" fill="#16A34A">PHASE 1</text>
+    <text x="28" y="60" font-size="22" font-weight="700" fill="#0F172A">Foundation</text>
+    <text x="28" y="80" font-size="12.5" fill="#475569">Hardware · Network · Hypervisor</text>
 
-    <!-- Step 01: Network Setup -->
-    <g>
-      <rect x="180" y="170" width="400" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="195" y="190" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">01</text>
-      <text x="380" y="200" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Network Setup</text>
-      <text x="380" y="220" font-size="9" fill="#0F6E56" text-anchor="middle">UniFi VLANs · Firewall · WireGuard VPN</text>
+    <g transform="translate(990, 28)">
+      <rect width="100" height="24" rx="12" fill="white" stroke="#86EFAC" stroke-width="1"/>
+      <path d="M 13 12 L 17 16 L 23 8" stroke="#16A34A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="30" y="16" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#15803D">DONE</text>
     </g>
 
-    <line x1="588" y1="205" x2="612" y2="205" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 02: Hypervisor & VM Foundation -->
-    <g>
-      <rect x="620" y="170" width="400" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="635" y="190" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">02</text>
-      <text x="820" y="200" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Hypervisor &amp; VM Foundation</text>
-      <text x="820" y="220" font-size="9" fill="#0F6E56" text-anchor="middle">Proxmox · two-tier storage · Win Server / 11 templates</text>
-    </g>
-  </g>
-
-  <line x1="600" y1="265" x2="600" y2="293" stroke="#212529" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
-
-  <!-- ===================== PHASE 2 — IDENTITY & ENDPOINT ===================== -->
-  <g>
-    <rect x="30" y="295" width="1140" height="160" rx="12" fill="#f3f2f1" stroke="#edebe9" stroke-width="1"/>
-    <text x="55" y="325" font-size="15" font-weight="800" letter-spacing="0.5" fill="#212529">PHASE 2 · IDENTITY &amp; ENDPOINT</text>
-    <text x="55" y="343" font-size="10" fill="#495057">Hybrid Active Directory, Autopilot, GPO baselines</text>
-
-    <!-- Step 03: Active Directory -->
-    <g>
-      <rect x="80" y="360" width="320" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="95" y="380" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">03</text>
-      <text x="240" y="390" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Active Directory</text>
-      <text x="240" y="410" font-size="9" fill="#0F6E56" text-anchor="middle">AT1SRV01 · OUs · AGDLP · Tiering</text>
+    <!-- Step 01 -->
+    <g transform="translate(30, 95)">
+      <rect width="515" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="#16A34A"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">01</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Network Setup</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">UniFi Router and Switch · VLANs · Firewall · WireGuard VPN</text>
     </g>
 
-    <line x1="408" y1="395" x2="432" y2="395" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 04: Hybrid Identity (Cloud) -->
-    <g>
-      <rect x="440" y="360" width="320" height="70" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="455" y="380" font-size="9" font-weight="600" fill="#993C1D" letter-spacing="0.5">04</text>
-      <text x="600" y="390" font-size="12" font-weight="600" fill="#4A1B0C" text-anchor="middle">Hybrid Identity</text>
-      <text x="600" y="410" font-size="9" fill="#993C1D" text-anchor="middle">Entra Connect · Password Hash Sync · SCP</text>
-    </g>
-
-    <line x1="768" y1="395" x2="792" y2="395" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 05: Endpoint Management (Client) -->
-    <g>
-      <rect x="800" y="360" width="320" height="70" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="815" y="380" font-size="9" font-weight="600" fill="#534AB7" letter-spacing="0.5">05</text>
-      <text x="960" y="390" font-size="12" font-weight="600" fill="#26215C" text-anchor="middle">Endpoint Management</text>
-      <text x="960" y="410" font-size="9" fill="#534AB7" text-anchor="middle">Autopilot Hybrid Join · LAPS · GPOs</text>
+    <!-- Step 02 -->
+    <g transform="translate(575, 95)">
+      <rect width="515" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="#16A34A"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">02</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Hypervisor &amp; VM Foundation</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Proxmox · Two-Tier Storage · Win Server / 11 Templates</text>
     </g>
   </g>
 
-  <line x1="600" y1="455" x2="600" y2="483" stroke="#212529" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <line x1="600" y1="205" x2="600" y2="220" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowDown)"/>
 
-  <!-- ===================== PHASE 3 — OPERATIONS & ITSM (PLANNED) ===================== -->
-  <g>
-    <rect x="30" y="485" width="1140" height="160" rx="8" fill="#fffcf5" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4 2"/>
-    <text x="55" y="515" font-size="15" font-weight="800" letter-spacing="0.5" fill="#212529">PHASE 3 · OPERATIONS &amp; ITSM</text>
-    <text x="55" y="533" font-size="10" fill="#854F0B">Planned · Visibility and control over the lab</text>
+  <!-- ============== PHASE 2 — DONE ============== -->
+  <g transform="translate(40, 230)">
+    <rect width="1120" height="170" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1" filter="url(#cardShadow)"/>
 
-    <!-- Step 06: Asset Management -->
-    <g>
-      <rect x="80" y="550" width="320" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="95" y="570" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">06</text>
-      <text x="240" y="580" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Asset Management</text>
-      <text x="240" y="600" font-size="9" fill="#0F6E56" text-anchor="middle">Snipe-IT · imported from Notion</text>
+    <text x="28" y="34" font-size="10" font-weight="700" letter-spacing="2.5" fill="#16A34A">PHASE 2</text>
+    <text x="28" y="60" font-size="22" font-weight="700" fill="#0F172A">Identity &amp; Endpoint</text>
+    <text x="28" y="80" font-size="12.5" fill="#475569">Hybrid Active Directory · GPO Baselines · Autopilot</text>
+
+    <g transform="translate(990, 28)">
+      <rect width="100" height="24" rx="12" fill="white" stroke="#86EFAC" stroke-width="1"/>
+      <path d="M 13 12 L 17 16 L 23 8" stroke="#16A34A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="30" y="16" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#15803D">DONE</text>
     </g>
 
-    <line x1="408" y1="585" x2="432" y2="585" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 07: Monitoring -->
-    <g>
-      <rect x="440" y="550" width="320" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="455" y="570" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">07</text>
-      <text x="600" y="580" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Monitoring</text>
-      <text x="600" y="600" font-size="9" fill="#0F6E56" text-anchor="middle">Zabbix or Prometheus + Grafana · alerts</text>
+    <!-- Step 03 -->
+    <g transform="translate(30, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="#16A34A"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">03</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Active Directory</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Domain Controller · GPOs · OUs · AGDLP · LAPS</text>
     </g>
 
-    <line x1="768" y1="585" x2="792" y2="585" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 08: Ticket System -->
-    <g>
-      <rect x="800" y="550" width="320" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="815" y="570" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">08</text>
-      <text x="960" y="580" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Ticket System</text>
-      <text x="960" y="600" font-size="9" fill="#0F6E56" text-anchor="middle">Zammad self-hosted</text>
-    </g>
-  </g>
-
-  <line x1="600" y1="645" x2="600" y2="673" stroke="#212529" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
-
-  <!-- ===================== PHASE 4 — CORE INFRASTRUCTURE (PLANNED) ===================== -->
-  <g>
-    <rect x="30" y="675" width="1140" height="160" rx="8" fill="#fffcf5" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4 2"/>
-    <text x="55" y="705" font-size="15" font-weight="800" letter-spacing="0.5" fill="#212529">PHASE 4 · CORE INFRASTRUCTURE SERVICES</text>
-    <text x="55" y="723" font-size="10" fill="#854F0B">Planned · Production-ready operations</text>
-
-    <!-- Step 09: Backup -->
-    <g>
-      <rect x="80" y="740" width="320" height="70" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="95" y="760" font-size="9" font-weight="600" fill="#0F6E56" letter-spacing="0.5">09</text>
-      <text x="240" y="770" font-size="12" font-weight="600" fill="#04342C" text-anchor="middle">Backup</text>
-      <text x="240" y="790" font-size="9" fill="#0F6E56" text-anchor="middle">Proxmox Backup Server · Veeam (optional)</text>
+    <!-- Step 04 -->
+    <g transform="translate(390, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="#16A34A"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">04</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Hybrid Identity</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Entra Connect · Password Hash Sync · SCP</text>
     </g>
 
-    <line x1="408" y1="775" x2="432" y2="775" stroke="#212529" stroke-width="1.3" marker-end="url(#arrow)"/>
-
-    <!-- Step 10: Patch Management (Client) -->
-    <g>
-      <rect x="440" y="740" width="320" height="70" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="455" y="760" font-size="9" font-weight="600" fill="#534AB7" letter-spacing="0.5">10</text>
-      <text x="600" y="770" font-size="12" font-weight="600" fill="#26215C" text-anchor="middle">Patch Management</text>
-      <text x="600" y="790" font-size="9" fill="#534AB7" text-anchor="middle">WSUS · GPO rollout rings · Pilot → Prod</text>
-    </g>
-
-    <line x1="768" y1="775" x2="792" y2="775" stroke="#212529" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrow)"/>
-
-    <!-- Step 11: Print Server (Optional / Amber) -->
-    <g>
-      <rect x="800" y="740" width="320" height="70" rx="6" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="815" y="760" font-size="9" font-weight="600" fill="#854F0B" letter-spacing="0.5">11</text>
-      <text x="960" y="770" font-size="12" font-weight="600" fill="#412402" text-anchor="middle">Print Server</text>
-      <text x="960" y="790" font-size="9" fill="#854F0B" text-anchor="middle">GPO-deployed printers · low priority</text>
+    <!-- Step 05 -->
+    <g transform="translate(750, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="#16A34A"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">05</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Endpoint Management</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">ODJConnector · Autopilot Hybrid Join · Intune</text>
     </g>
   </g>
 
-  <line x1="600" y1="835" x2="600" y2="863" stroke="#212529" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <line x1="600" y1="405" x2="600" y2="420" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowDown)"/>
 
-  <!-- ===================== PHASE 5 — HR AUTOMATION (PLANNED) ===================== -->
-  <g>
-    <rect x="30" y="865" width="1140" height="135" rx="8" fill="#fffcf5" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4 2"/>
-    <text x="55" y="895" font-size="15" font-weight="800" letter-spacing="0.5" fill="#212529">PHASE 5 · HR AUTOMATION &amp; IDENTITY LIFECYCLE</text>
-    <text x="55" y="913" font-size="10" fill="#854F0B">Planned · Automated on- / offboarding</text>
+  <!-- ============== PHASE 3 — PLANNED ============== -->
+  <g transform="translate(40, 430)">
+    <rect width="1120" height="170" rx="10" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1" filter="url(#cardShadow)"/>
 
-    <!-- Step 12: Identity Lifecycle Automation (Cloud) -->
-    <g>
-      <rect x="280" y="930" width="640" height="55" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5" filter="url(#boxShadow)"/>
-      <text x="295" y="950" font-size="9" font-weight="600" fill="#993C1D" letter-spacing="0.5">12</text>
-      <text x="600" y="956" font-size="12" font-weight="600" fill="#4A1B0C" text-anchor="middle">Identity Lifecycle Automation</text>
-      <text x="600" y="974" font-size="9" fill="#993C1D" text-anchor="middle">OrangeHRM → PowerShell → AD user · ROL_ assignment · Entra sync · Snipe-IT asset · Zammad ticket</text>
+    <text x="28" y="34" font-size="10" font-weight="700" letter-spacing="2.5" fill="#D97706">PHASE 3</text>
+    <text x="28" y="60" font-size="22" font-weight="700" fill="#0F172A">Operations &amp; ITSM</text>
+    <text x="28" y="80" font-size="12.5" fill="#475569">Visibility and control over the lab</text>
+
+    <g transform="translate(1010, 28)">
+      <rect width="80" height="24" rx="12" fill="white" stroke="#FCD34D" stroke-width="1"/>
+      <circle cx="14" cy="12" r="5" fill="white" stroke="#D97706" stroke-width="1.5"/>
+      <text x="26" y="16" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#92400E">PLANNED</text>
+    </g>
+
+    <!-- Step 06 -->
+    <g transform="translate(30, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">06</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Asset Management</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Snipe-IT · Imported from Obsidian</text>
+    </g>
+
+    <!-- Step 07 -->
+    <g transform="translate(390, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">07</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Monitoring</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Prometheus + Grafana · Alerts</text>
+    </g>
+
+    <!-- Step 08 -->
+    <g transform="translate(750, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">08</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Ticket System</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Zammad self-hosted</text>
     </g>
   </g>
 
-  <!-- ===================== LEGEND ===================== -->
-  <g>
-    <line x1="40" y1="1025" x2="1160" y2="1025" stroke="#edebe9" stroke-width="1"/>
-    <text x="40" y="1052" font-size="10" font-weight="600" fill="#495057" letter-spacing="0.5">LEGEND</text>
+  <line x1="600" y1="605" x2="600" y2="620" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowDown)"/>
 
-    <rect x="120" y="1042" width="14" height="14" rx="2" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-    <text x="142" y="1053" font-size="10" fill="#6c757d">On-prem / process</text>
+  <!-- ============== PHASE 4 — PLANNED ============== -->
+  <g transform="translate(40, 630)">
+    <rect width="1120" height="170" rx="10" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1" filter="url(#cardShadow)"/>
 
-    <rect x="280" y="1042" width="14" height="14" rx="2" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
-    <text x="302" y="1053" font-size="10" fill="#6c757d">Cloud / hybrid</text>
+    <text x="28" y="34" font-size="10" font-weight="700" letter-spacing="2.5" fill="#D97706">PHASE 4</text>
+    <text x="28" y="60" font-size="22" font-weight="700" fill="#0F172A">Core Infrastructure Services</text>
+    <text x="28" y="80" font-size="12.5" fill="#475569">Production-ready operations</text>
 
-    <rect x="420" y="1042" width="14" height="14" rx="2" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
-    <text x="442" y="1053" font-size="10" fill="#6c757d">Endpoint / client</text>
+    <g transform="translate(1010, 28)">
+      <rect width="80" height="24" rx="12" fill="white" stroke="#FCD34D" stroke-width="1"/>
+      <circle cx="14" cy="12" r="5" fill="white" stroke="#D97706" stroke-width="1.5"/>
+      <text x="26" y="16" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#92400E">PLANNED</text>
+    </g>
 
-    <rect x="580" y="1042" width="14" height="14" rx="2" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
-    <text x="602" y="1053" font-size="10" fill="#6c757d">Optional / low priority</text>
+    <!-- Step 09 -->
+    <g transform="translate(30, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">09</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Backup</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">Proxmox Backup Server · Veeam</text>
+    </g>
 
-    <rect x="760" y="1042" width="14" height="14" rx="2" fill="#fffcf5" stroke="#EF9F27" stroke-width="1" stroke-dasharray="3 2"/>
-    <text x="782" y="1053" font-size="10" fill="#6c757d">Planned phase</text>
+    <!-- Step 10 -->
+    <g transform="translate(390, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">10</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Patch Management</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">WSUS · GPO Rollout Rings · Pilot → Prod</text>
+    </g>
+
+    <!-- Step 11 -->
+    <g transform="translate(750, 95)">
+      <rect width="340" height="60" rx="8" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="32" cy="30" r="15" fill="white" stroke="#D97706" stroke-width="1.8"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">11</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Print Server</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">GPO-deployed printers</text>
+    </g>
+  </g>
+
+  <line x1="600" y1="805" x2="600" y2="820" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowDown)"/>
+
+  <!-- ============== PHASE 5 — CAPSTONE ============== -->
+  <g transform="translate(40, 830)">
+    <rect width="1120" height="170" rx="10" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1" filter="url(#cardShadow)"/>
+
+    <text x="28" y="34" font-size="10" font-weight="700" letter-spacing="2.5" fill="#D97706">PHASE 5</text>
+    <text x="28" y="60" font-size="22" font-weight="700" fill="#0F172A">HR Automation &amp; Identity Lifecycle</text>
+    <text x="28" y="80" font-size="12.5" fill="#475569">Automated on- / offboarding · End-to-end pipeline</text>
+
+    <g transform="translate(1010, 28)">
+      <rect width="80" height="24" rx="12" fill="white" stroke="#FCD34D" stroke-width="1"/>
+      <circle cx="14" cy="12" r="5" fill="white" stroke="#D97706" stroke-width="1.5"/>
+      <text x="26" y="16" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#92400E">PLANNED</text>
+    </g>
+
+    <!-- Step 12 — capstone -->
+    <g transform="translate(30, 95)">
+      <rect width="1060" height="60" rx="8" fill="#FAF5FF" stroke="#A78BFA" stroke-width="1.5"/>
+      <circle cx="32" cy="30" r="15" fill="#7C3AED"/>
+      <text x="32" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white">12</text>
+      <text x="60" y="26" font-size="14" font-weight="600" fill="#0F172A">Identity Lifecycle Automation</text>
+      <text x="60" y="44" font-size="11.5" fill="#475569">OrangeHRM → PowerShell → AD User · ROL_ assignment · Entra Sync · Snipe-IT Asset · Zammad Ticket</text>
+    </g>
   </g>
 </svg>
