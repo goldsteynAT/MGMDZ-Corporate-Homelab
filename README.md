@@ -1,10 +1,15 @@
+<div align="center">
+  
 # MGMDZ - Corporate Homelab
 "Man geht mit der Zeit oder man geht mit der Zeit"
 
-A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform end-to-end — on-premises Active Directory, Microsoft Entra ID, Windows Autopilot, GPO-based hardening, segmented networking, and tiered administration.
+A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform end-to-end:<br>
+On-premises VMs: **Active Directory**, Microsoft **Entra** & **Intune**, Windows **Autopilot**, **GPO**-based hardening, segmented **networking**
 
-> **Status:** Active development — see [Roadmap](#roadmap).
-> **Purpose:** Self-study and skill demonstration. All data is fictional.
+</div>
+
+> **Status:** Active development — see [Roadmap](#roadmap)
+> **Purpose:** Self-study and skill demonstration
 
 ---
 
@@ -12,23 +17,27 @@ A personal lab environment built to design, document, and operate an enterprise-
 
 <img src="./architecture-roadmap.svg" alt="ArchitectureRoadmap"/>
 
-> The lab also runs separate VLANs for Home, IoT, Camera, and Guest networks. These are isolated from the corporate lab segments by default and documented in [Network Design](docs/01-network-design.md).
+> The lab also runs separate VLANs for Home, IoT, Camera, and Guest networks. These are isolated from the corporate lab segments by default.
 
 ---
 
 ## Screenshots
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
-    <td align="center" width="33%">
-      <img src="./images/10-69-110-5-DomainController.png" alt="Bild 1" width="100%"><br>
+    <td align="center" width="25%">
+      <img src="./images/Proxmox.png" alt="Bild 1" width="100%"><br>
+      <b>Proxmox Hypervisor with Virtual Machines</b>
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/DomainController.png" alt="Bild 1" width="100%"><br>
       <b>Screenshot Domain Controller incl. OUs and GPOs</b>
     </td>
-    <td align="center" width="33%">
-      <img src="./images/10-69-110-6-EntraConnect.png" alt="Bild 2" width="100%"><br>
+    <td align="center" width="25%">
+      <img src="./images/EntraConnect.png" alt="Bild 2" width="100%"><br>
       <b>Screenshot Entra Connect incl. Synchronization Service Manager</b>
     </td>
-    <td align="center" width="33%">
-      <img src="./images/10-69-110-8-ODJConnector.png" alt="Bild 3" width="100%"><br>
+    <td align="center" width="25%">
+      <img src="./images/ODJConnector.png" alt="Bild 3" width="100%"><br>
       <b>Screenshot ODJ Connector incl. Event Viewer and Services.msc</b>
     </td>
   </tr>
@@ -39,13 +48,14 @@ A personal lab environment built to design, document, and operate an enterprise-
 
 ## What this lab demonstrates
 
-- **Hybrid identity** — on-prem Active Directory ↔ Microsoft Entra ID via Entra Connect Sync (Password Hash Sync)
+- **Hybrid identity** — on-prem Active Directory ↔ Microsoft Entra ID via Entra Connect Sync
 - **Windows Autopilot** in a Hybrid Azure AD Join scenario, fronted by an ODJ Connector
 - **Structured AD design** — Top-Level-OU principle, AGDLP-style RBAC with `ROL_` / `PRM_` group prefixes, intentional sync-scope separation between `_CORP` and `_ADMIN`
 - **Group Policy hardening** — domain baseline, LAPS with custom managed admin account, RDP hardening, workstation baseline, restricted-groups model
-- **Tiered administration** — Tier 0 / 1 / 2 separation with dedicated admin accounts and PAW concept
 - **Network segmentation** — VLAN-based isolation between corporate, home, IoT, camera, and guest networks; WireGuard VPN with scoped access to the lab segment only
 - **Documentation as infrastructure** — every layer is documented, versioned, and reviewable
+
+Work in progress - additional features such as Asset Management (Snipe-IT), Monitoring (Prometheus + Grafana), Ticket System (Zammad), Backup (VEAAM), Patch Management (WSUS), Print Server,.. will be added over time.
 
 ---
 
@@ -125,6 +135,13 @@ A more granular per-document roadmap is tracked at the bottom of each detail doc
 **Documentation** · Markdown · Mermaid · Notion (asset DB) · Snipe-IT (planned)
 
 ---
+
+## Sources / Udemy Courses
+[Mastering Active Directory](https://www.udemy.com/course/mastering-active-directory-mit-microsoft-windows-server)
+<br>
+[MD-102: Endpoint Administrator](https://www.udemy.com/course/md-102-endpoint-administrator-o)
+<br>
+[Proxmox Masterclass](https://www.udemy.com/course/proxmox-hands-on-masterclass-from-beginner-to-expert)
 
 ## Related repositories
 
