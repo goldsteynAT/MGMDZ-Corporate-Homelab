@@ -3,8 +3,8 @@
 # MGMDZ - Corporate Homelab
 "Man geht mit der Zeit oder man geht mit der Zeit"
 
-A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform end-to-end:<br>
-On-premises VMs: **Active Directory**, Microsoft **Entra** & **Intune**, Windows **Autopilot**, **GPO**-based hardening, segmented **networking**
+A personal lab environment built to design, document, and operate an enterprise-style hybrid identity platform:<br>
+**Active Directory**, Microsoft **Entra** & **Intune**, Windows **Autopilot**, **GPO**-based hardening, segmented **networking**
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 ![Phase](https://img.shields.io/badge/phase-3%20of%205-blue)
