@@ -72,22 +72,12 @@ Work in progress - additional features such as Asset Management (Snipe-IT), Moni
 | Host | Lenovo ThinkCentre M920q - `AT1HST01` |
 | CPU | Intel i7-9700T  (8 cores) |
 | RAM | 32 GB DDR4 SODIMM (2 × 16 GB) |
-| Storage — Tier 0 | 256 GB NVMe → `local-lvm` (core infrastructure) |
-| Storage — Tier 1 | 1 TB SSD → `workload-storage` (workloads, clients) |
-| Hypervisor | Proxmox VE — `vmbr0` VLAN-aware |
+| Storage — Tier 0 | 256 GB NVMe → `local-lvm` |
+| Storage — Tier 1 | 1 TB SSD → `workload-storage` |
+| Hypervisor | Proxmox VE - `vmbr0` VLAN-aware |
 
 <br clear="left">
 
-
----
-
-## Roadmap
-
-### Next up
-
-- [ ] Server baseline GPO (`GPO-SRV-Baseline`)
-- [ ] Admin Servers baseline + hardening (`GPO-ADM-*`)
-- [ ] LAPS authorized-decryptor group (`G-SEC-LAPS-Admins`)
 
 ---
 
