@@ -89,7 +89,7 @@ Work in progress - additional features such as Asset Management (Snipe-IT), Moni
 **Networking** · UniFi · VLANs · Firewall rules · WireGuard <br>
 **OS** · Windows Server 2022 · Windows 11 Enterprise <br>
 **Scripting** · PowerShell · Active Directory module · LAPS module <br>
-**Documentation** · Markdown · Mermaid · Notion (asset DB) · Snipe-IT (planned) <br>
+**Documentation** · Markdown · Obsidian · Snipe-IT <br>
 
 ---
 
