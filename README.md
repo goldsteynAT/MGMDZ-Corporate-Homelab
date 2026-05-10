@@ -52,32 +52,78 @@ A personal lab environment built to design, document, and operate an enterprise-
 
 ## What this lab demonstrates
 
-- **Hybrid identity** — on-prem Active Directory ↔ Microsoft Entra ID via Entra Connect Sync
+- **Hybrid identity**: on-prem Active Directory ↔ Microsoft Entra ID via Entra Connect Sync
 - **Windows Autopilot** in a Hybrid Azure AD Join scenario, fronted by an ODJ Connector
-- **Structured AD design** — Top-Level-OU principle, AGDLP-style RBAC with `ROL_` / `PRM_` group prefixes, intentional sync-scope separation between `_CORP` and `_ADMIN`
-- **Group Policy hardening** — domain baseline, LAPS with custom managed admin account, RDP hardening, workstation baseline, restricted-groups model
-- **Network segmentation** — VLAN-based isolation between corporate, home, IoT, camera, and guest networks; WireGuard VPN with scoped access to the lab segment only
-- **Documentation as infrastructure** — every layer is documented, versioned, and reviewable
+- **Structured AD design** - Top-Level-OU principle, AGDLP-style RBAC with `ROL_` / `PRM_` group prefixes, intentional sync-scope separation between `_CORP` and `_ADMIN`
+- **Group Policy hardening** - domain baseline, LAPS with custom managed admin account, RDP hardening, workstation baseline, restricted-groups model
+- **Network segmentation** - VLAN-based isolation between corporate, home, IoT, camera, and guest networks; WireGuard VPN with scoped access to the lab segment only
+- **Documentation as infrastructure** - every layer is documented, versioned, and reviewable
 
-Work in progress - additional features such as Asset Management (Snipe-IT), Monitoring (Prometheus + Grafana), Ticket System (Zammad), Backup (VEAAM), Patch Management (WSUS), Print Server,.. will be added over time.
+~ Work in progress ~ <br> additional features such as 
+Asset Management (Snipe-IT), Monitoring (Prometheus + Grafana), Ticket System (Zammad), Backup (VEAAM), Patch Management (WSUS), Print Server,.. will be added over time.
 
 ---
 
-## Environment
+---
+## Environment - Hardware
 
-<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="320" align="left">
+### Networking
+
+<img src="./images/Unifi_Router_Switch.jpeg" alt="Unifi Router Switch" width="730">
+
+<table>
+<tr>
+<td valign="top">
 
 | Component | Spec |
 |---|---|
-| Host | Lenovo ThinkCentre M920q - `AT1HST01` |
-| CPU | Intel i7-9700T  (8 cores) |
+| Router / Firewall | UniFi Express |
+| Switch | UniFi USW Lite 8 PoE |
+| VPN | WireGuard (built-in) |
+
+</td>
+<td valign="top">
+
+| VLAN | Name | Subnet |
+|---:|---|---|
+| 100 | Corp Lab / Mgmt | `10.69.100.0/24` |
+| 110 | Corp Servers | `10.69.110.0/24` |
+| 120 | Corp Clients | `10.69.120.0/24` |
+| 254 | Management | `10.69.254.0/24` |
+
+</td>
+</tr>
+</table>
+
+### Server
+
+<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="320" align="left">
+
+<table>
+<tr>
+<td valign="top">
+
+| Component | Spec |
+|---|---|
+| Host | Lenovo ThinkCentre M920q — `AT1HST01` |
+| CPU | Intel i7-9700T (8 cores) |
 | RAM | 32 GB DDR4 SODIMM (2 × 16 GB) |
 | Storage — Tier 0 | 256 GB NVMe → `local-lvm` |
 | Storage — Tier 1 | 1 TB SSD → `workload-storage` |
-| Hypervisor | Proxmox VE - `vmbr0` VLAN-aware |
+| Hypervisor | Proxmox VE — `vmbr0` VLAN-aware |
+
+| Name | Role | VLAN | OS |
+|---|---|---|---|
+| `AT1SRV01` | Domain Controller, DNS, DHCP | 110 | Windows Server 2022 |
+| `AT1SRV02` | Entra Connect Sync | 110 | Windows Server 2022 |
+| `AT1SRV04` | ODJ Connector | 110 | Windows Server 2022 |
+| `AT1WKS01` | Corporate workstation | 120 | Windows 11 Enterprise |
+
+</td>
+</tr>
+</table>
 
 <br clear="left">
-
 
 ---
 
