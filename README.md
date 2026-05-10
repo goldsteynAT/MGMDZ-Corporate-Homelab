@@ -65,7 +65,7 @@ Work in progress - additional features such as Asset Management (Snipe-IT), Moni
 
 ## Environment
 
-<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="380" align="left">
+<img src="./images/LenovoThinkCentreM920Q.jpeg" alt="Lenovo ThinkCentre M920q" width="320" align="left">
 
 | Component | Spec |
 |---|---|
@@ -83,13 +83,13 @@ Work in progress - additional features such as Asset Management (Snipe-IT), Moni
 
 ## Tech stack
 
-**Hypervisor & infra** · Proxmox VE · LVM-Thin · QEMU/KVM · UEFI/Q35
-**Identity** · Active Directory Domain Services · Microsoft Entra ID · Entra Connect Sync · Hybrid Azure AD Join
-**Endpoint management** · Windows Autopilot · Intune · ODJ Connector · Windows LAPS · Group Policy
-**Networking** · UniFi · VLANs · Firewall rules · WireGuard
-**OS** · Windows Server 2022 · Windows 11 Enterprise
-**Scripting** · PowerShell · Active Directory module · LAPS module
-**Documentation** · Markdown · Mermaid · Notion (asset DB) · Snipe-IT (planned)
+**Hypervisor & infra** · Proxmox VE · LVM-Thin · QEMU/KVM · UEFI/Q35 <br>
+**Identity** · Active Directory Domain Services · Microsoft Entra ID · Entra Connect Sync · Hybrid Azure AD Join <br>
+**Endpoint management** · Windows Autopilot · Intune · ODJ Connector · Windows LAPS · Group Policy <br>
+**Networking** · UniFi · VLANs · Firewall rules · WireGuard <br>
+**OS** · Windows Server 2022 · Windows 11 Enterprise <br>
+**Scripting** · PowerShell · Active Directory module · LAPS module <br>
+**Documentation** · Markdown · Mermaid · Notion (asset DB) · Snipe-IT (planned) <br>
 
 ---
 
